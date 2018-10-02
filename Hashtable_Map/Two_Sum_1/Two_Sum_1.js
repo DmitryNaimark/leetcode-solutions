@@ -25,8 +25,13 @@ var twoSum = function(numbers, target) {
         
         if (iteratedNumbersSet.has(numberToSearch)) {
             return [iteratedNumbersSet.get(numberToSearch), iNumber]
-        } else {
-            iteratedNumbersSet.set(number, iNumber);
         }
+        
+        iteratedNumbersSet.set(number, iNumber);
     }
 };
+
+// ---------------------------------------------------
+//                    Test Cases
+// ---------------------------------------------------
+console.log(twoSum([2, 7, 11, 15], 9));
