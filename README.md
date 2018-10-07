@@ -9,6 +9,7 @@ This repository contains list of LeetCode problems I've solved, my JavaScript so
 | 13 | ![][easy] | [Roman to Integer](https://leetcode.com/problems/roman-to-integer/description/) | `Hashtable(Map)`, `Math` | [![](./images/solution.png)](Hashtable_Map/Roman_to_Integer_13/Roman_to_Integer_13.js) [![](./images/solution.png)](Hashtable_Map/Roman_to_Integer_13/[Using_Single_Characters_Only]_Roman_to_Integer_13.js) | - | | Yes | `2018-10-03`
 | 14 | ![][easy] | [Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/description/) | `Strings` | [![](./images/solution.png)](Strings/Longest_Common_Prefix_14/Longest_Common_Prefix_14.js) | [![](./images/solution.png)](https://leetcode.com/problems/longest-common-prefix/solution/#) | | Yes | `2018-10-03`
 | 914 | ![][easy] | [X of a Kind in a Deck of cards](https://leetcode.com/problems/x-of-a-kind-in-a-deck-of-cards/description/) | `gcd`, `Math`, `Hashtable(Map)` | [![](./images/solution.png)](Math/X_of_a_Kind_in_a_Deck_of_Cards_914/X_of_a_Kind_in_a_Deck_of_Cards_914.js) | [![](./images/solution.png)](https://leetcode.com/problems/x-of-a-kind-in-a-deck-of-cards/solution/#) | | No, almost (couldn't figure good gcd formula) | `2018-10-07`
+| 2 | ![][medium] | [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/description/) | `LinkedList` | [![](./images/solution.png)](LinkedList/Add_Two_Numbers_2/Add_Two_Numbers_2.js) | [![](./images/solution.png)](https://leetcode.com/problems/add-two-numbers/solution/#) | | Yes | `2018-10-07`
 
 ## Glossary
 ### Math
