@@ -8,14 +8,16 @@ This repository contains list of LeetCode problems I've solved, my JavaScript so
 | 9 | ![][easy] | [Palindrome Number](https://leetcode.com/problems/palindrome-number/description/) | `Reverse`, `Math`, `Palindrome` | [![](./images/solution.png)](Math/Palindrome_Number_9/Palindrome_Number_9.js) [![](./images/solution.png)](Math/Palindrome_Number_9/[Reversing_Half_the_Number]_Palindrome_Number_9.js) | [![](./images/solution.png)](https://leetcode.com/problems/palindrome-number/solution/#) | | Yes | `2018-10-02`
 | 13 | ![][easy] | [Roman to Integer](https://leetcode.com/problems/roman-to-integer/description/) | `Map`, `Math` | [![](./images/solution.png)](Map/Roman_to_Integer_13/Roman_to_Integer_13.js) [![](./images/solution.png)](Map/Roman_to_Integer_13/[Using_Single_Characters_Only]_Roman_to_Integer_13.js) | - | | Yes | `2018-10-03`
 | 14 | ![][easy] | [Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/description/) | `String` | [![](./images/solution.png)](String/Longest_Common_Prefix_14/Longest_Common_Prefix_14.js) | [![](./images/solution.png)](https://leetcode.com/problems/longest-common-prefix/solution/#) | | Yes | `2018-10-03`
-| 914 | ![][easy] | [X of a Kind in a Deck of cards](https://leetcode.com/problems/x-of-a-kind-in-a-deck-of-cards/description/) | `gcd`, `Math`, `Map` | [![](./images/solution.png)](Math/X_of_a_Kind_in_a_Deck_of_Cards_914/X_of_a_Kind_in_a_Deck_of_Cards_914.js) | [![](./images/solution.png)](https://leetcode.com/problems/x-of-a-kind-in-a-deck-of-cards/solution/#) | | No, almost (couldn't figure good gcd formula) | `2018-10-07`
+| 914 | ![][easy] | [X of a Kind in a Deck of cards](https://leetcode.com/problems/x-of-a-kind-in-a-deck-of-cards/description/) | `GCD`, `Math`, `Map` | [![](./images/solution.png)](Math/X_of_a_Kind_in_a_Deck_of_Cards_914/X_of_a_Kind_in_a_Deck_of_Cards_914.js) | [![](./images/solution.png)](https://leetcode.com/problems/x-of-a-kind-in-a-deck-of-cards/solution/#) | | No, almost (couldn't figure good GCD formula) | `2018-10-07`
 | 2 | ![][medium] | [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/description/) | `LinkedList` | [![](./images/solution.png)](LinkedList/Add_Two_Numbers_2/Add_Two_Numbers_2.js) | [![](./images/solution.png)](https://leetcode.com/problems/add-two-numbers/solution/#) | | Yes | `2018-10-07`
 
 ## Glossary
 ### Math
-* **gcd** - [Greatest Common Divisor](https://en.wikipedia.org/wiki/Greatest_common_divisor).
-    * GCD for `6` and `9` is `3`.
-    Other names: greatest common factor(**gcf**),highest common factor(**hcf**), greatest common measure(**gcm**), or highest common divisor(**hcd**)
+* **GCD** - [Greatest Common Divisor](https://en.wikipedia.org/wiki/Greatest_common_divisor).
+    * GCD for `6` and `9` is `3`.  
+    Other names: greatest common factor(**gcf**),highest common factor(**hcf**), greatest common measure(**gcm**), or highest common divisor(**hcd**).  
+    GCD between two numbers can be found using [Euclidian Algorithm](https://www.youtube.com/watch?v=JUzYl1TYMcU).
+    
 
 <!-- References to images, which can be used in markdown -->
 [easy]: ./images/easy.png
