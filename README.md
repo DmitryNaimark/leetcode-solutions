@@ -13,7 +13,9 @@ This repository contains list of LeetCode problems I've solved, my JavaScript so
 
 ## Glossary
 ### Math
-* **gcd** - [Greatest Common Divisor](https://en.wikipedia.org/wiki/Greatest_common_divisor). GCD for `6` and `9` is `3`.  Other names: greatest common factor(**gcf**),highest common factor(**hcf**), greatest common measure(**gcm**), or highest common divisor(**hcd**)
+* **gcd** - [Greatest Common Divisor](https://en.wikipedia.org/wiki/Greatest_common_divisor).
+    * GCD for `6` and `9` is `3`.
+    Other names: greatest common factor(**gcf**),highest common factor(**hcf**), greatest common measure(**gcm**), or highest common divisor(**hcd**)
 
 <!-- References to images, which can be used in markdown -->
 [easy]: ./images/easy.png
