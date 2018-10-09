@@ -15,7 +15,7 @@ This repository contains list of LeetCode problems I've solved, my JavaScript so
 ### Math
 * **GCD** - [Greatest Common Divisor](https://en.wikipedia.org/wiki/Greatest_common_divisor).
     * GCD for `6` and `9` is `3`.  
-    Other names: greatest common factor(**gcf**),highest common factor(**hcf**), greatest common measure(**gcm**), or highest common divisor(**hcd**).  
+    Other names: greatest common factor(**gcf**), highest common factor(**hcf**), greatest common measure(**gcm**), highest common divisor(**hcd**).  
     GCD between two numbers can be found using [Euclidian Algorithm](https://www.youtube.com/watch?v=JUzYl1TYMcU).
     
 
