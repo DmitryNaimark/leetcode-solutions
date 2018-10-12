@@ -20,12 +20,18 @@ This repository contains list of LeetCode problems I've solved, my JavaScript so
     Other names: greatest common factor(**gcf**), highest common factor(**hcf**), greatest common measure(**gcm**), highest common divisor(**hcd**).  
     GCD between two numbers can be found using [Euclidian Algorithm](https://www.youtube.com/watch?v=JUzYl1TYMcU).
     
+* **[Array Median](https://en.wikipedia.org/wiki/Median)** - value "in the middle" of the sorted array.  
+    It's a value separating the higher half from the lower half.  
+    Median for `[1, 8, 19]` is `8`.  
+    Median for `[4, 8, 15, 16, 23, 42]` is `(15 + 16) / 2`,  which is `15.5`
+    
+    
 ### Algorithms
 * **[Sliding window](https://wcipeg.com/wiki/Sliding_window)** - abstract concept commonly [used in array/string problems](https://leetcode.com/problems/longest-substring-without-repeating-characters/solution/#)  
     * A window is a range of elements in the array/string which usually defined by the start and end indices, i.e. `[i,j)` (left-closed, right-open).  
     A sliding window is when a window "slides" its two boundaries to the certain direction.  
     For example, if we slide `[i,j)` to the right by 1 element, then it becomes `[i+1,j+1)` (left-closed, right-open).  
-    We can slide only start or only end, window can change its size.
+    We can slide only start or only end, window can change its size. 
     
 
 <!-- References to images, which can be used in markdown -->
