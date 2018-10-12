@@ -22,7 +22,6 @@
  * @param {number[]} nums2
  * @return {number}
  */
-
 function findMedianSortedArrays(nums1, nums2) {
     let i = -1,
         j = -1,
