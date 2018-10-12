@@ -21,7 +21,7 @@ This repository contains list of LeetCode problems I've solved, my JavaScript so
     GCD between two numbers can be found using [Euclidian Algorithm](https://www.youtube.com/watch?v=JUzYl1TYMcU).
     
 * **[Array Median](https://en.wikipedia.org/wiki/Median)** - value "in the middle" of the sorted array.  
-    It's a value separating the higher half from the lower half.  
+    * It's a value separating the higher half from the lower half.  
     Median for `[1, 8, 19]` is `8`.  
     Median for `[4, 8, 15, 16, 23, 42]` is `(15 + 16) / 2`,  which is `15.5`
     
