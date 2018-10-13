@@ -1,5 +1,7 @@
-# LeetCode-solutions
-This repository contains list of LeetCode problems I've solved, my JavaScript solutions and overal progress.
+# LeetCode Solutions
+This repository contains list of LeetCode problems I've solved, my JavaScript solutions, links to LeetCode and other solutions.  
+There is also a [Glossary section](#glossary) at the bottom, where useful terms and concepts are stored.  
+<br />
 
 | # | Difficulty | Title | Tags | My Solutions | LeetCode Solution | Other cool solutions | Solved on my own? | Date |
 |:-:|:----------:|-------|------|:------------:|:-----------------:|:--------------------:|:-----------------:|:----:|
