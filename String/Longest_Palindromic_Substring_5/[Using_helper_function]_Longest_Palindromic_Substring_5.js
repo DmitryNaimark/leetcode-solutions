@@ -23,7 +23,7 @@ function longestPalindrome(s) {
     };
     
     for (let i = 0; i < s.length; i++) {
-        expandFromCenter(s, i, i, longest);
+        expandFromCenter(s, i - 1, i + 1, longest);
         expandFromCenter(s, i, i + 1, longest);
     }
     
