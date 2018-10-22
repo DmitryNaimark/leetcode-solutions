@@ -33,7 +33,6 @@
 //     The characters of name and typed are lowercase letters.
 // ---------------------------------------------------
 
-// Solution
 function isLongPressedName(name, typed) {
     let i = 0,
         j = 0,
