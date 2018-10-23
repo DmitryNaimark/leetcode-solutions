@@ -41,15 +41,15 @@ There is also a [Glossary section](#glossary) at the bottom, where useful terms 
     We can slide only start or only end, window can change its size. 
     
 * **[Prefix sum](https://en.wikipedia.org/wiki/Prefix_sum)** - "Running totals", calculated in additional array.  
-    Other names: *cumulative sum, inclusive scan, running totals, sums.*  
+    * Other names: *cumulative sum, inclusive scan, running totals, sums.*  
     
-    *Example:*  
-    Input numbers: `[1, 3, 4, 2, 7]`  
-    Prefix sums: `[1, 4, 8, 10, 17]`.  
-    &nbsp;&nbsp;&nbsp; Inclusive sum between elements `[1]` and `[3]` is `P[3] - P[1 - 1] = 10 - 1 = 9`  
-    
-    Another possible Prefix sums(used for convenience of accessing first, last elements and calculating sum between elements) is `[0, 1, 4, 8, 10, 17]`  
-    &nbsp;&nbsp;&nbsp; Inclusive sum between elements `[1]` and `[3]` is `P[3 + 1] - P[1] = 10 - 1 = 9`
+        *Example:*  
+        Input numbers: `[1, 3, 4, 2, 7]`  
+        Prefix sums: `[1, 4, 8, 10, 17]`.  
+        &nbsp;&nbsp;&nbsp; Inclusive sum between elements `[1]` and `[3]` is `P[3] - P[1 - 1] = 10 - 1 = 9`  
+        
+        Another possible Prefix sums(used for convenience of accessing first, last elements and calculating sum between elements) is `[0, 1, 4, 8, 10, 17]`  
+        &nbsp;&nbsp;&nbsp; Inclusive sum between elements `[1]` and `[3]` is `P[3 + 1] - P[1] = 10 - 1 = 9`
 
 <!-- References to images, which can be used in markdown -->
 [easy]: ./images/easy.png
