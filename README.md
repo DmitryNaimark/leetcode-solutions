@@ -18,7 +18,7 @@ There is also a [Glossary section](#glossary) at the bottom, where useful terms 
 | 6 | ![][medium] | [ZigZag Conversion](https://leetcode.com/problems/zigzag-conversion/description/) | `String` | [![](./images/solution.png)](String/ZigZag_Conversion_6/ZigZag_Conversion_6.js) | [![](./images/solution.png)](https://leetcode.com/problems/zigzag-conversion/solution/#) |  | Yes | `2018-10-14`
 | 8 | ![][medium] | [String to Integer (atoi)](https://leetcode.com/problems/string-to-integer-atoi/description/) | `String`, `Number` | [![](./images/solution.png)](String/String_to_Integer_(atoi)_8/String_to_Integer_(atoi)_8.js) | - |  | Yes | `2018-10-14`
 | 925 | ![][easy] | [Long Pressed Name](https://leetcode.com/problems/long-pressed-name/description/) | `String` | [![](./images/solution.png)](String/Long_Pressed_Name_925/Long_Pressed_Name_925.js) | [![](./images/solution.png)](https://leetcode.com/problems/long-pressed-name/solution/) |  | Yes | `2018-10-21`
-| 926 | ![][medium] | [Flip String to Monotone Increasing](https://leetcode.com/problems/flip-string-to-monotone-increasing/description/) | `Math`, `String` | [![](./images/solution.png)](Math/Flip_String_to_Monotone_Increasing_926/Flip_String_to_Monotone_Increasing_926.js) | [![](./images/solution.png)](https://leetcode.com/problems/flip-string-to-monotone-increasing/solution/) | ["Sliding" + counting Sum Prefixes](https://leetcode.com/problems/flip-string-to-monotone-increasing/discuss/183851/C%2B%2B-4-lines-O(n)-or-O(1)-DP), [Counting while iterating](https://leetcode.com/problems/flip-string-to-monotone-increasing/discuss/183896/Prefix-Suffix-Java-O(N)-One-Pass-Solution-Space-O(1)) | No, wrongly discarded thought to try all possible solutions | `2018-10-23`
+| 926 | ![][medium] | [Flip String to Monotone Increasing](https://leetcode.com/problems/flip-string-to-monotone-increasing/description/) | `Math`, `String` | [![](./images/solution.png)](Math/Flip_String_to_Monotone_Increasing_926/Flip_String_to_Monotone_Increasing_926.js) | [![](./images/solution.png)](https://leetcode.com/problems/flip-string-to-monotone-increasing/solution/) | ["Sliding" + counting Prefix Sums](https://leetcode.com/problems/flip-string-to-monotone-increasing/discuss/183851/C%2B%2B-4-lines-O(n)-or-O(1)-DP), [Counting while iterating](https://leetcode.com/problems/flip-string-to-monotone-increasing/discuss/183896/Prefix-Suffix-Java-O(N)-One-Pass-Solution-Space-O(1)) | No, wrongly discarded thought to try all possible solutions | `2018-10-23`
 
 ## Glossary
 ### Math
@@ -40,6 +40,16 @@ There is also a [Glossary section](#glossary) at the bottom, where useful terms 
     For example, if we slide `[i,j)` to the right by 1 element, then it becomes `[i+1,j+1)` (left-closed, right-open).  
     We can slide only start or only end, window can change its size. 
     
+* **[Prefix sum](https://en.wikipedia.org/wiki/Prefix_sum)** - "Running totals", calculated in additional array.  
+    Other names: *cumulative sum, inclusive scan, running totals, sums.*  
+    
+    *Example:*  
+    Input numbers: `[1, 3, 4, 2, 7]`  
+    Prefix sums: `[1, 4, 8, 10, 17]`.  
+    &nbsp;&nbsp;&nbsp; Inclusive sum between elements `[1]` and `[3]` is `P[3] - P[1 - 1] = 10 - 1 = 9`  
+    
+    Another possible Prefix sums(used for convenience of accessing first, last elements and calculating sum between elements) is `[0, 1, 4, 8, 10, 17]`  
+    &nbsp;&nbsp;&nbsp; Inclusive sum between elements `[1]` and `[3]` is `P[3 + 1] - P[1] = 10 - 1 = 9`
 
 <!-- References to images, which can be used in markdown -->
 [easy]: ./images/easy.png
