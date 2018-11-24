@@ -20,7 +20,8 @@ There is also a [Glossary section](#glossary) at the bottom, where useful terms 
 | 925 | ![][easy] | [Long Pressed Name](https://leetcode.com/problems/long-pressed-name/description/) | `String` | [![](./images/solution.png)](String/Long_Pressed_Name_925/Long_Pressed_Name_925.js) | [![](./images/solution.png)](https://leetcode.com/problems/long-pressed-name/solution/) |  | Yes | `2018-10-21`
 | 926 | ![][medium] | [Flip String to Monotone Increasing](https://leetcode.com/problems/flip-string-to-monotone-increasing/description/) | `Math`, `String` | [![](./images/solution.png)](Math/Flip_String_to_Monotone_Increasing_926/Flip_String_to_Monotone_Increasing_926.js) | [![](./images/solution.png)](https://leetcode.com/problems/flip-string-to-monotone-increasing/solution/) | ["Sliding" + counting Prefix Sums](https://leetcode.com/problems/flip-string-to-monotone-increasing/discuss/183851/C%2B%2B-4-lines-O(n)-or-O(1)-DP), [Counting while iterating](https://leetcode.com/problems/flip-string-to-monotone-increasing/discuss/183896/Prefix-Suffix-Java-O(N)-One-Pass-Solution-Space-O(1)) | No, wrongly discarded thought to try all possible solutions | `2018-10-23`
 | 771 | ![][easy] | [Jewels and Stones](https://leetcode.com/problems/jewels-and-stones/description/) | `HashTable` | [![](./images/solution.png)](HashTable/Jewels_and_Stones_771/Jewels_and_Stones_771.js) | - | | Yes | `2018-11-19`
-| 933 | ![][easy] | [Number of Recent Calls](https://leetcode.com/problems/number-of-recent-calls/description/) | `Array`, `Queue` | [![Naive, slow solution](./images/solution.png)](Array/Number_of_Recent_Calls_933/[Initial_Naive_Slow_Solution]_Number_of_Recent_Calls_933.js) [![Using Queue - much better](./images/solution.png)](Queue/Number_of_Recent_Calls_933/Number_of_Recent_Calls_933.js) | [![](./images/solution.png)](https://leetcode.com/problems/number-of-recent-calls/solution/) | | Yes, but suboptimal, it's better to use Queue | `2018-11-20`
+| 933 | ![][easy] | [Number of Recent Calls](https://leetcode.com/problems/number-of-recent-calls/description/) | `Array`, `Queue` | [![Naive, slow solution](./images/solution.png)](Array/Number_of_Recent_Calls_933/[Initial_Naive_Slow_Solution]_Number_of_Recent_Calls_933.js) [![Using Queue - much better](./images/solution.png)](Queue/Number_of_Recent_Calls_933/Number_of_Recent_Calls_933.js) | [![](./images/solution.png)](https://leetcode.com/problems/number-of-recent-calls/solution/) | | Yes, but subopt., it's better to use Queue | `2018-11-20`
+| 937 | ![][easy] | [Reoder Log Files](https://leetcode.com/problems/reorder-log-files/description/) | `String` | [![](./images/solution.png)](String/Reoder_Log_Files_937/Reoder_Log_Files_937.js) | [![Official solution is pretty slow](./images/solution.png)](https://leetcode.com/problems/reorder-log-files/solution/) | | Yes | `2018-11-24`
 
 ## Glossary
 ### Math
@@ -52,6 +53,11 @@ There is also a [Glossary section](#glossary) at the bottom, where useful terms 
         
         Another possible Prefix sums(used for convenience of accessing first, last elements and calculating sum between elements) is `[0, 1, 4, 8, 10, 17]`  
         &nbsp;&nbsp;&nbsp; Inclusive sum between elements `[1]` and `[3]` is `P[3 + 1] - P[1] = 10 - 1 = 9`
+        
+        
+### Strings
+* **[Lexicographical order](https://en.wikipedia.org/wiki/Lexicographical_order)**
+    * Other names: *alphabetical order, lexical order, dictionary order*
 
 <!-- References to images, which can be used in markdown -->
 [easy]: ./images/easy.png
