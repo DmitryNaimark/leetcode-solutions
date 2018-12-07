@@ -26,7 +26,7 @@ There is also a [Glossary section](#glossary) at the bottom, where useful terms 
 | 941 | ![][easy] | [Valid Mountain Array](https://leetcode.com/problems/valid-mountain-array/description/) | `Array` | [![](./images/solution.png)](Array/Valid_Mountain_Array_941/Valid_Mountain_Array_941.js) | [![](./images/solution.png)](https://leetcode.com/problems/valid-mountain-array/solution/) | | Yes | `2018-11-24`
 | 944 | ![][easy] | [Delete Columns to Make Sorted](https://leetcode.com/problems/delete-columns-to-make-sorted/description/) | `Array` | [![](./images/solution.png)](Array/Delete_Columns_to_Make_Sorted_944/Delete_Columns_to_Make_Sorted_944.js) | [![](./images/solution.png)](https://leetcode.com/problems/delete-columns-to-make-sorted/solution/) | | Yes | `2018-11-24`
 | 945 | ![][medium] | [Minimum Increment to Make Array Unique](https://leetcode.com/problems/minimum-increment-to-make-array-unique/description/) | `Array` | [![](./images/solution.png)](Array/Minimum_Increment_to_Make_Array_Unique_945/Minimum_Increment_to_Make_Array_Unique_945.js) | [![](./images/solution.png)](https://leetcode.com/problems/minimum-increment-to-make-array-unique/solution/) |  | Yes, but there is faster solution (see Sol. 1) | `2018-12-06`
-
+| 946 | ![][medium] | [Validate Stack Sequences](https://leetcode.com/problems/validate-stack-sequences/description/) | `Stack` | [![](./images/solution.png)](Queue/Validate_Stack_Sequences_946/Validate_Stack_Sequences_946.js) | [![](./images/solution.png)](https://leetcode.com/problems/validate-stack-sequences/solution/) |  | No, didn't get how to simulate the process | `2018-12-07`
 
 ## Glossary
 ### Math
