@@ -35,6 +35,10 @@ function canReorderDoubled(arr) {
     }
     
     for (let [num, numCount] of numCountMap.entries()) {
+        if (numCount === 0) {
+            continue;
+        }
+        
         let doubledNumber = num * 2;
         
         if (numCount > (numCountMap.get(doubledNumber) || 0)) {
