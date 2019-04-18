@@ -1,4 +1,4 @@
-# LeetCode Solutions
+# LeetCode Solutions (JS)
 This repository contains LeetCode problems I've solved using JavaScript, links to official(and clever unofficial) solutions.  
 
 Solutions are grouped by Topics(see folders above).  
