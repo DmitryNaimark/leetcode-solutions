@@ -1,5 +1,9 @@
 # LeetCode Solutions
 This repository contains LeetCode problems I've solved using JavaScript, links to official(and clever unofficial) solutions.  
+
+Solutions are grouped by Topics(see folders above).  
+Each `*.js` file with solution also contains official Problem Statement.
+
 Feel free to Fork, Clone or Star this repository.  
 <br />
 
