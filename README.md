@@ -1,6 +1,6 @@
 # LeetCode Solutions
-This repository contains list of LeetCode problems I've solved, my JavaScript solutions, links to LeetCode and other solutions.  
-There is also a [Glossary section](#glossary) at the bottom, where useful terms and concepts are stored.  
+This repository contains LeetCode problems I've solved using JavaScript, links to official(and clever unofficial) solutions.  
+Feel free to Fork, Clone or Star this repository.  
 <br />
 
 | # | Difficulty | Title | Tags | My Solutions | LeetCode Solution | Other cool solutions | Solved on my own? | Date |
@@ -34,42 +34,6 @@ There is also a [Glossary section](#glossary) at the bottom, where useful terms 
 | 953 | ![][easy] | [Verifying an Alien Dictionary](https://leetcode.com/problems/verifying-an-alien-dictionary/description/) | `HashTable` | [![](./images/solution.png)](HashTable/Verifying_an_Alien_Dictionary_953/Verifying_an_Alien_Dictionary_953.js) | [![](./images/solution.png)](https://leetcode.com/problems/verifying-an-alien-dictionary/solution/) |  | Yes | `2018-12-15`
 | 954 | ![][medium] | [Array of Doubled Pairs](https://leetcode.com/problems/array-of-doubled-pairs/description/) | `HashTable` | [![](./images/solution.png)](HashTable/Array_of_Doubled_Pairs_954/Array_of_Doubled_Pairs_954.js) | [![](./images/solution.png)](https://leetcode.com/problems/array-of-doubled-pairs/solution/) |  | Yes | `2018-12-15`
 | 955 | ![][medium] | [Delete Columns to Make Sorted II](https://leetcode.com/problems/delete-columns-to-make-sorted-ii/description/) | `HashTable` | [![](./images/solution.png)](HashTable/Delete_Columns_to_Make_Sorted_II_955/Delete_Columns_to_Make_Sorted_II_955.js) | [![](./images/solution.png)](https://leetcode.com/problems/delete-columns-to-make-sorted-ii/solution/) |  | Yes | `2018-12-15`
-
-## Glossary
-### Math
-* **GCD** - [Greatest Common Divisor](https://en.wikipedia.org/wiki/Greatest_common_divisor).
-    * GCD for `6` and `9` is `3`.  
-    Other names: greatest common factor(**gcf**), highest common factor(**hcf**), greatest common measure(**gcm**), highest common divisor(**hcd**).  
-    GCD between two numbers can be found using [Euclidian Algorithm](https://www.youtube.com/watch?v=JUzYl1TYMcU).
-    
-* **[Array Median](https://en.wikipedia.org/wiki/Median)** - value "in the middle" of the sorted array.  
-    * It's a value separating the higher half from the lower half.  
-    Median for `[1, 8, 19]` is `8`.  
-    Median for `[4, 8, 15, 16, 23, 42]` is `(15 + 16) / 2`,  which is `15.5`
-    
-    
-### Algorithms
-* **[Sliding window](https://wcipeg.com/wiki/Sliding_window)** - abstract concept commonly [used in array/string problems](https://leetcode.com/problems/longest-substring-without-repeating-characters/solution/#)  
-    * A window is a range of elements in the array/string which usually defined by the start and end indices, i.e. `[i,j)` (left-closed, right-open).  
-    A sliding window is when a window "slides" its two boundaries to the certain direction.  
-    For example, if we slide `[i,j)` to the right by 1 element, then it becomes `[i+1,j+1)` (left-closed, right-open).  
-    We can slide only start or only end, window can change its size. 
-    
-* **[Prefix sum](https://en.wikipedia.org/wiki/Prefix_sum)** - "Running totals", calculated in additional array.  
-    * Other names: *cumulative sum, inclusive scan, running totals, sums.*  
-    
-        *Example:*  
-        Input numbers: `[1, 3, 4, 2, 7]`  
-        Prefix sums: `[1, 4, 8, 10, 17]`.  
-        &nbsp;&nbsp;&nbsp; Inclusive sum between elements `[1]` and `[3]` is `P[3] - P[1 - 1] = 10 - 1 = 9`  
-        
-        Another possible Prefix sums(used for convenience of accessing first, last elements and calculating sum between elements) is `[0, 1, 4, 8, 10, 17]`  
-        &nbsp;&nbsp;&nbsp; Inclusive sum between elements `[1]` and `[3]` is `P[3 + 1] - P[1] = 10 - 1 = 9`
-        
-        
-### Strings
-* **[Lexicographical order](https://en.wikipedia.org/wiki/Lexicographical_order)**
-    * Other names: *alphabetical order, lexical order, dictionary order*
 
 <!-- References to images, which can be used in markdown -->
 [easy]: ./images/easy.png
