@@ -6,7 +6,12 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-let expect = "<Problem number>. <Problem name>";
+let expect = "<Problem number>. <Problem name>",
+    problemNumber,
+    problemName,
+    problemNameUnderscores,
+    topicFolderName,
+    problemFolderName;
 
 console.log('Enter "<Problem number>. <Problem name>" (copy it from LeetCode problem page)');
 
@@ -14,16 +19,24 @@ rl.on('line', (line) => {
     // Expects manually copied line: "771. Jewels and Stones"
     if (expect === "<Problem number>. <Problem name>") {
         let dotIndex = line.indexOf('.');
-        let problemNumber = line.substring(0, dotIndex);
-        let problemName = line.substring(dotIndex + 2);
+        problemNumber = line.substring(0, dotIndex);
+        problemName = line.substring(dotIndex + 2);
         
         expect = "Topic";
         console.log(`Provide main topic folder (for example: "HashTable" or "DynamicProgramming")`)
     } else if (expect === "Topic") {
-        const topicFolderRelativePath = line;
+        topicFolderName = line;
         
-        if (fs.existsSync(topicFolderRelativePath)) {
-            console.log(`Folder exists!`);
+        // Check if Topic Folder already exists(which is expected).
+        if (fs.existsSync(topicFolderName)) {
+            console.log(`Topic folder exists (good)`);
+            
+            problemNameUnderscores = problemName.replace(' ', '_');
+            problemFolderName = `${problemNameUnderscores}_${problemNumber}`;
+            console.log(`Creating problem folder "${problemFolderName}" inside topic folder "${topicFolderName}"`);
+    
+            createProblemFolder();
+            
             exitApplication();
         } else {
             console.log(`Specified folder doesn't exist in "leetcode-solutions"`);
@@ -32,7 +45,28 @@ rl.on('line', (line) => {
     }
 });
 
+// Creates Problem Folder inside Topic Folder.
+function createProblemFolder() {
+    try {
+        createFolderRecursivelyIfDoesntExist(`${topicFolderName}/${problemFolderName}`);
+        console.log(`Problem folder "${problemFolderName}" created inside topic folder "${topicFolderName}"`);
+    } catch (err) {
+        console.error(err)
+    }
+}
 
+// Creates folder(you can provide relative path using slash: 'parentFolder/childFolder".
+function createFolderRecursivelyIfDoesntExist(folderPath) {
+    try {
+        fs.mkdirSync(folderPath, { recursive: true });
+    } catch (exception) {
+        if (exception.code !== 'EEXIST') {
+            throw exception;
+        }
+    }
+}
+
+// Exits NodeJS Application.
 function exitApplication() {
     rl.close();
     process.exit();
