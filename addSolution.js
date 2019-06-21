@@ -1,5 +1,6 @@
 const readline = require('readline');
 const fs = require("fs");
+const replaceInFile = require('replace-in-file');
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -7,12 +8,22 @@ const rl = readline.createInterface({
 });
 
 let expect = "<Problem number>. <Problem name>",
+    // "771"
     problemNumber,
+    // "Jewels and Stones"
     problemName,
+    // "Jewels_and_Stones"
     problemNameUnderscores,
+    // "jewels-and-stones"
+    problemNameDashed,
+    // "HashTable"
     topicFolderName,
+    // "Jewels_and_Stones_771"
     problemFolderName,
-    problemFileName;
+    // "Jewels_and_Stones_771.js"
+    problemFileName,
+    // "HashTable/Jewels_and_Stones_771/Jewels_and_Stones_771.js"
+    problemFileFullPath;
 
 console.log('Enter "<Problem number>. <Problem name>" (copy it from LeetCode problem page)');
 
@@ -39,10 +50,11 @@ rl.on('line', (line) => {
             
             // Create Problem file (using "templateSolution.js" as a template).
             problemFileName = `${problemFolderName}.js`;
-            copyFile("templateSolution.js", `${topicFolderName}/${problemFolderName}/${problemFileName}`);
+            problemFileFullPath = `${topicFolderName}/${problemFolderName}/${problemFileName}`;
+            copyFile("templateSolution.js", problemFileFullPath);
             
-            // TODO: Add URL inside the Problem file.
-            
+            // Add URL inside the Problem file.
+            replaceUrlInProblemFile();
             
             // exitApplication();
         } else {
@@ -84,6 +96,26 @@ function copyFile(sourceFilePath, destinationFilePath) {
         
         console.log(`${sourceFilePath} was copied to ${destinationFilePath}`);
     });
+}
+
+// Replaces URL in Problem file
+function replaceUrlInProblemFile() {
+    problemNameDashed = problemName.toLowerCase().replace(/ /g, '-');
+    let problemUrl = `https://leetcode.com/problems/${problemNameDashed}/`;
+    
+    const options = {
+        files: problemFileFullPath,
+        from: /LeetCode Problem URL/,
+        to: problemUrl
+    };
+    
+    try {
+        const results = replaceInFile.sync(options);
+        // console.log('Replacement results:', results);
+    }
+    catch (error) {
+        console.error('Error occurred during URL replacement:', error);
+    }
 }
 
 // Exits NodeJS Application.
