@@ -23,7 +23,7 @@ rl.on('line', (line) => {
         problemName = line.substring(dotIndex + 2);
         
         expect = "Topic";
-        console.log(`Provide main topic folder (for example: "HashTable" or "DynamicProgramming")`)
+        console.log(`Provide main Topic folder (for example: "HashTable" or "DynamicProgramming")`)
     } else if (expect === "Topic") {
         topicFolderName = line;
         
@@ -33,14 +33,14 @@ rl.on('line', (line) => {
             
             problemNameUnderscores = problemName.replace(' ', '_');
             problemFolderName = `${problemNameUnderscores}_${problemNumber}`;
-            console.log(`Creating problem folder "${problemFolderName}" inside topic folder "${topicFolderName}"`);
+            console.log(`Creating Problem folder "${problemFolderName}" inside Topic folder "${topicFolderName}"`);
     
             createProblemFolder();
             
             exitApplication();
         } else {
-            console.log(`Specified folder doesn't exist in "leetcode-solutions"`);
-            console.log(`Provide main topic folder (for example: "HashTable" or "DynamicProgramming")`)
+            console.log(`Specified Topic folder doesn't exist in "leetcode-solutions"`);
+            console.log(`Provide main Topic folder (for example: "HashTable" or "DynamicProgramming")`)
         }
     }
 });
@@ -49,8 +49,9 @@ rl.on('line', (line) => {
 function createProblemFolder() {
     try {
         createFolderRecursivelyIfDoesntExist(`${topicFolderName}/${problemFolderName}`);
-        console.log(`Problem folder "${problemFolderName}" created inside topic folder "${topicFolderName}"`);
+        console.log(`Problem folder "${problemFolderName}" was created inside Topic folder "${topicFolderName}"`);
     } catch (err) {
+        console.log(`Couldn't create Problem folder, error:`);
         console.error(err)
     }
 }
