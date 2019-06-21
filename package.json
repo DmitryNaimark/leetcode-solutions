@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/DmitryNaimark/leetcode-solutions/issues"
   },
-  "homepage": "https://github.com/DmitryNaimark/leetcode-solutions#readme"
+  "homepage": "https://github.com/DmitryNaimark/leetcode-solutions#readme",
+  "dependencies": {
+    "replace-in-file": "^4.1.0"
+  }
 }
