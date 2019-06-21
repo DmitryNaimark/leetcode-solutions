@@ -11,7 +11,8 @@ let expect = "<Problem number>. <Problem name>",
     problemName,
     problemNameUnderscores,
     topicFolderName,
-    problemFolderName;
+    problemFolderName,
+    problemFileName;
 
 console.log('Enter "<Problem number>. <Problem name>" (copy it from LeetCode problem page)');
 
@@ -31,13 +32,19 @@ rl.on('line', (line) => {
         if (fs.existsSync(topicFolderName)) {
             console.log(`Topic folder exists (good)`);
             
-            problemNameUnderscores = problemName.replace(' ', '_');
+            // Create Problem folder
+            problemNameUnderscores = problemName.replace(/ /g, '_');
             problemFolderName = `${problemNameUnderscores}_${problemNumber}`;
-            console.log(`Creating Problem folder "${problemFolderName}" inside Topic folder "${topicFolderName}"`);
-    
             createProblemFolder();
             
-            exitApplication();
+            // Create Problem file (using "templateSolution.js" as a template).
+            problemFileName = `${problemFolderName}.js`;
+            copyFile("templateSolution.js", `${topicFolderName}/${problemFolderName}/${problemFileName}`);
+            
+            // TODO: Add URL inside the Problem file.
+            
+            
+            // exitApplication();
         } else {
             console.log(`Specified Topic folder doesn't exist in "leetcode-solutions"`);
             console.log(`Provide main Topic folder (for example: "HashTable" or "DynamicProgramming")`)
@@ -65,6 +72,18 @@ function createFolderRecursivelyIfDoesntExist(folderPath) {
             throw exception;
         }
     }
+}
+
+// Copies file from one folder to another with possibility to rename the file.
+function copyFile(sourceFilePath, destinationFilePath) {
+    // "destinationFilePath" will be created or overwritten by default.
+    fs.copyFile(sourceFilePath, destinationFilePath, function(exception) {
+        if (exception) {
+            throw exception;
+        }
+        
+        console.log(`${sourceFilePath} was copied to ${destinationFilePath}`);
+    });
 }
 
 // Exits NodeJS Application.
