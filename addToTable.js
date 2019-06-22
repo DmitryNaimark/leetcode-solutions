@@ -37,8 +37,8 @@ rl.on('line', (line) => {
         // Trim "_" from start and end.
         problemNameUnderscores = problemNameUnderscores.replace(/^_+|_+$/g, '');
         
-        let dirsAndFiles = klawSync('.');
-        console.log(paths.map((obj) => obj.path));
+        let dirs = klawSync('./topics', {nofile: true, depthLimit: 1});
+        console.log(dirs.map((obj) => obj.path));
     }
 });
 
