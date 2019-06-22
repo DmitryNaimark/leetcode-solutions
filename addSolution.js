@@ -56,7 +56,8 @@ rl.on('line', (line) => {
             // Add URL inside the Problem file.
             replaceUrlInProblemFile();
             
-            // exitApplication();
+            
+            exitApplication();
         } else {
             console.log(`Specified Topic folder doesn't exist in "leetcode-solutions"`);
             console.log(`Provide main Topic folder (for example: "HashTable" or "DynamicProgramming")`)
@@ -112,6 +113,7 @@ function replaceUrlInProblemFile() {
     try {
         const results = replaceInFile.sync(options);
         // console.log('Replacement results:', results);
+        console.log('URL was successfully set in Problem file');
     }
     catch (error) {
         console.error('Error occurred during URL replacement:', error);
