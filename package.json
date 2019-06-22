@@ -4,7 +4,8 @@
   "description": "LeetCode solutions and Progress Table in README.md",
   "main": "README.md",
   "scripts": {
-    "add-solution": "node addSolution"
+    "add-solution": "node addSolution",
+    "add-to-table": "node addToTable"
   },
   "repository": {
     "type": "git",
