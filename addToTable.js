@@ -38,7 +38,25 @@ rl.on('line', (line) => {
         problemNameUnderscores = problemNameUnderscores.replace(/^_+|_+$/g, '');
         
         let dirs = klawSync('./topics', {nofile: true, depthLimit: 1});
-        console.log(dirs.map((obj) => obj.path));
+        let problemNameUnderscoresLowerCase = problemNameUnderscores.toLowerCase();
+        
+        console.log(`Searching for "${problemNameUnderscoresLowerCase}" Problem Folder inside "/topics/..."`);
+        let foundProblemDirs = dirs.filter((dir) => dir.path.toLowerCase().indexOf(problemNameUnderscoresLowerCase) >= 0);
+        let foundProblemDir;
+        
+        // Problem Folder wasn't found
+        if (foundProblemDirs.length === 0) {
+            console.error(`Couldn't find specified Problem Folder. Make sure such folder exists inside some Topic Folder (search is case insensitive)`);
+            console.log(`Enter Problem name (without problem number)`);
+        }
+        // Problem folder was found
+        else {
+            foundProblemDir = foundProblemDirs[0];
+            // console.log(dirs.map((obj) => obj.path));
+            console.log('foundProblemDir.path', foundProblemDir.path);
+        }
+        
+        
     }
 });
 
