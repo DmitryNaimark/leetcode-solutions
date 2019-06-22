@@ -53,9 +53,3 @@ function printBinaryTime(totalMinutes) {
 //                    Test Cases
 // ---------------------------------------------------
 console.log(JSON.stringify(readBinaryWatch(4)));
-
-
-
-// ---------------------------------------------------
-//            Test Cases use DN functions:
-// ---------------------------------------------------

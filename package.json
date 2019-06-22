@@ -28,5 +28,8 @@
   "homepage": "https://github.com/DmitryNaimark/leetcode-solutions#readme",
   "dependencies": {
     "replace-in-file": "^4.1.0"
+  },
+  "devDependencies": {
+    "klaw-sync": "^6.0.0"
   }
 }

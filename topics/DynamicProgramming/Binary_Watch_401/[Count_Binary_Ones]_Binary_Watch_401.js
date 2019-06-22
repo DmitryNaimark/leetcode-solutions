@@ -42,9 +42,3 @@ function countOnesInBinary(num) {
 //                    Test Cases
 // ---------------------------------------------------
 console.log(JSON.stringify(readBinaryWatch(2)));
-
-
-
-// ---------------------------------------------------
-//            Test Cases use DN functions:
-// ---------------------------------------------------

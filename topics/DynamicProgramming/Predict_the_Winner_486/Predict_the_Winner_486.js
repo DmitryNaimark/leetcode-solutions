@@ -36,9 +36,3 @@ function getOptScore(nums, s, e, turn, memo) {
 // ---------------------------------------------------
 console.log(PredictTheWinner([1,5,2]));
 console.log(PredictTheWinner([1, 5, 233, 7]));
-
-
-
-// ---------------------------------------------------
-//            Test Cases use DN functions:
-// ---------------------------------------------------

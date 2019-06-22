@@ -1,6 +1,7 @@
 const readline = require('readline');
 const fs = require("fs");
 const replaceInFile = require('replace-in-file');
+const klawSync = require('klaw-sync')
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -36,7 +37,8 @@ rl.on('line', (line) => {
         // Trim "_" from start and end.
         problemNameUnderscores = problemNameUnderscores.replace(/^_+|_+$/g, '');
         
-        
+        let dirsAndFiles = klawSync('.');
+        console.log(paths.map((obj) => obj.path));
     }
 });
 
