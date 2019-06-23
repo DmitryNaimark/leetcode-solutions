@@ -45,7 +45,7 @@ rl.on('line', (line) => {
             
             // Request from user necessary info and generate text for each column inside README.md table.
             console.log('Enter Problem Difficulty: easy(e), medium(m), hard(h)');
-            let expect = "Difficulty";
+            expect = "Difficulty";
         }
     } else if (expect === "Difficulty") {
         let difficulty;
@@ -67,7 +67,28 @@ rl.on('line', (line) => {
         } else {
             let difficultyColumn = `![][${difficulty}]`;
     
-            let titleColumn;
+            let splittedPath = problemFolderFullPath.split('\\');
+            problemFolderName = splittedPath[splittedPath.length - 1];
+            topicFolderName = splittedPath[splittedPath.length - 2];
+            
+            let words = problemFolderName.split('_');
+            problemNumber = words[words.length - 1];
+            // Remove problem number.
+            words.pop();
+            problemName = words.join(' ');
+            problemNameUnderscores = words.join('_');
+            problemNameDashed = words.join('-').toLowerCase();
+        
+            // Helper variables, used to generate URLs, path to Problem Folder, Topic Folder etc.
+            // console.log('problemNumber', problemNumber);
+            // console.log('problemName', problemName);
+            // console.log('problemNameUnderscores', problemNameUnderscores);
+            // console.log('problemNameDashed', problemNameDashed);
+            // console.log('topicFolderName', topicFolderName);
+            // console.log('problemFolderName', problemFolderName);
+            
+            let titleColumn = `[${problemNumber}. ${problemName}](https://leetcode.com/problems/${problemNameDashed}/description/)`;
+            
             let tagsColumn;
     
             let mySolutionsColumn;
