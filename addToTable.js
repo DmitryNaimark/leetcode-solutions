@@ -40,10 +40,20 @@ rl.on('line', (line) => {
         } else {
             console.log('Problem Folder was found(good)');
             console.log(`\t${problemFolderFullPath}`);
+            
+            // Retrieve list of JS files(Problem Solutions) inside Problem Folder.
+            let problemFilesFullPaths = findProblemFiles(problemFolderFullPath);
         }
     }
 });
 
+function findProblemFiles(problemFolderFullPath) {
+    let problemFiles = klawSync(problemFolderFullPath, {nodir: true});
+    return problemFiles.map((problemFile) => problemFile.path);
+}
+
+// Returns full path for provided Problem Folder name.
+// problemName: case insensitive, spaces or underscores, without problem number.
 function findProblemFolder(problemName) {
     let dirs = klawSync('./topics', {nofile: true, depthLimit: 1});
     
