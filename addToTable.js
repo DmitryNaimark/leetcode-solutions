@@ -1,7 +1,7 @@
 const readline = require('readline');
 const fs = require("fs");
 const replaceInFile = require('replace-in-file');
-const klawSync = require('klaw-sync')
+const klawSync = require('klaw-sync');
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -31,18 +31,21 @@ console.log(`Enter Problem name (without problem number)`);
 rl.on('line', (line) => {
     // Expects "Jewels and Stones" or "Jewels_and_Stones".
     if (expect === "Problem name") {
-        let problemFolderFullPath;
-        do {
-            console.log(`Enter Problem name (without problem number)`);
-            problemFolderFullPath = findProblemFolder(line, {nofile: true, depthLimit: 1});
-        } while (problemFolderFullPath == null);
+        // Find Problem Folder
+        let problemFolderFullPath = findProblemFolder(line);
         
-        console.log(problemFolderFullPath);
+        // Problem Folder wasn't found
+        if (problemFolderFullPath == null) {
+            console.log(`Enter Problem name (without problem number)`);
+        } else {
+            console.log('Problem Folder was found(good)');
+            console.log(`\t${problemFolderFullPath}`);
+        }
     }
 });
 
-function findProblemFolder(problemName, klawConfig) {
-    let dirs = klawSync('./topics', klawConfig);
+function findProblemFolder(problemName) {
+    let dirs = klawSync('./topics', {nofile: true, depthLimit: 1});
     
     // Replace spaces with underscores.
     problemNameUnderscores = problemName.replace(/ /g, '_');
