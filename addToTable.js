@@ -9,6 +9,8 @@ const rl = readline.createInterface({
 });
 
 let expect = "Problem name",
+    // ...\leetcode-solutions\topics\HashTable\Jewels_and_Stones_771
+    problemFolderFullPath,
     // "771"
     problemNumber,
     // "Jewels and Stones"
@@ -32,7 +34,7 @@ rl.on('line', (line) => {
     // Expects "Jewels and Stones" or "Jewels_and_Stones".
     if (expect === "Problem name") {
         // Find Problem Folder
-        let problemFolderFullPath = findProblemFolder(line);
+        problemFolderFullPath = findProblemFolder(line);
         
         // Problem Folder wasn't found
         if (problemFolderFullPath == null) {
@@ -41,8 +43,42 @@ rl.on('line', (line) => {
             console.log('Problem Folder was found(good)');
             console.log(`\t${problemFolderFullPath}`);
             
+            // Request from user necessary info and generate text for each column inside README.md table.
+            console.log('Enter Problem Difficulty: easy(e), medium(m), hard(h)');
+            let expect = "Difficulty";
+        }
+    } else if (expect === "Difficulty") {
+        let difficulty;
+        switch(line[0]) {
+            case 'e':
+                difficulty = 'easy';
+                break;
+            case 'm':
+                difficulty = 'medium';
+                break;
+            case 'h':
+                difficulty = 'hard';
+                break;
+        }
+        
+        // Provided difficulty was invalid.
+        if (difficulty === undefined) {
+            console.log('Enter Problem Difficulty (easy(e), medium(m), hard(h))');
+        } else {
+            let difficultyColumn = `![][${difficulty}]`;
+    
+            let titleColumn;
+            let tagsColumn;
+    
+            let mySolutionsColumn;
             // Retrieve list of JS files(Problem Solutions) inside Problem Folder.
             let problemFilesFullPaths = findProblemFiles(problemFolderFullPath);
+    
+    
+            let leetCodeSolutionColumn;
+            let otherCoolSolutionsColumn;
+            let solvedOnMyOwnColumn;
+            let dateColumn;
         }
     }
 });
