@@ -24,7 +24,9 @@ let expect = "Problem name",
     // "Jewels_and_Stones_771"
     problemFolderName,
     mySolutionsPaths,
-    mySolutionsFileNames;
+    mySolutionsFileNames,
+    otherSolutionsUrls,
+    iOtherSolution = 0;
 
 // Text in columns, which will be programmatically generated.
 
@@ -153,8 +155,39 @@ rl.on('line', (line) => {
         } else {
             leetCodeSolutionColumn = '-';
         }
-        
-        
+    
+    
+        console.log(`Add URLs for Other Cool Solutions using "," as separator`);
+        expect = 'Other cool solutions URLs';
+    } else if (expect === 'Other cool solutions URLs') {
+    
+        // If user has entered Other Cool Solutions URLs.
+        if (line !== '') {
+            otherSolutionsUrls = line.split(',').map((url) => url.trim());
+            otherCoolSolutionsColumn = '';
+            console.log(`Enter Tooltip for file "${otherSolutionsUrls[0]}" (when hovering over solution icon)`);
+            expect = "OtherSolutions Tooltip";
+        } else {
+            otherCoolSolutionsColumn = '';
+            console.log('Solved on my own?');
+            expect = "Solved on my own answer";
+        }
+    } else if (expect === "OtherSolutions Tooltip") {
+        // 1) [Generating permut-s in descending order](https://leetcode.com/problems/largest-time-for-given-digits/discuss/201564/C%2B%2B-4-lines-0-ms-prev_permutation), <br><br>
+    
+        otherCoolSolutionsColumn += `${iOtherSolution + 1}) [${line}](${otherSolutionsUrls[iOtherSolution]})`;
+        iOtherSolution++;
+    
+        if (iOtherSolution < otherSolutionsUrls.length) {
+            otherCoolSolutionsColumn += ', <br><br>';
+            console.log(`Enter Tooltip for file "${otherSolutionsUrls[0]}" (when hovering over solution icon)`);
+        } else {
+            console.log(otherCoolSolutionsColumn);
+            
+            console.log('Solved on my own?');
+            expect = "Solved on my own answer";
+        }
+    } else if (expect === "Solved on my own answer") {
         let otherCoolSolutionsColumn;
         let solvedOnMyOwnColumn;
         let dateColumn;
