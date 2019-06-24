@@ -36,6 +36,9 @@
 //     1 <= A[i].length <= 1000
 // ---------------------------------------------------
 
+// Runtime Complexity: O(A.length * N)
+// Space Complexity: O(1)
+
 /**
  * @param {string[]} arr
  * @return {number}
