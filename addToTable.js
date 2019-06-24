@@ -29,7 +29,6 @@ let expect = "Problem name",
     iOtherSolution = 0;
 
 // Text in columns, which will be programmatically generated.
-
 // ![][easy]
 let difficultyColumn,
     // [771. Jewels and Stones](https://leetcode.com/problems/jewels-and-stones/description/)
@@ -51,7 +50,7 @@ let difficultyColumn,
     // Date when this Problem was added to README.md.
     dateColumn;
 
-console.log(`Enter Problem name (without problem number)`);
+console.log(`Enter solved Problem Name (without problem number. Can be partial unique name)`);
 
 rl.on('line', (line) => {
     // Expects "Jewels and Stones" or "Jewels_and_Stones".
@@ -67,7 +66,7 @@ rl.on('line', (line) => {
             console.log(`\t${problemFolderFullPath}`);
             
             // Request necessary info from user and generate text for each column inside README.md table.
-            console.log('Enter Problem Difficulty: easy(e), medium(m), hard(h)');
+            console.log('\nEnter Problem Difficulty: easy(e), medium(m), hard(h)');
             expect = "Difficulty";
         }
     } else if (expect === "Difficulty") {
@@ -105,7 +104,7 @@ rl.on('line', (line) => {
             titleColumn = `[${problemNumber}. ${problemName}](https://leetcode.com/problems/${problemNameDashed}/description/)`;
     
             // Request from user necessary info and generate text for each column inside README.md table.
-            console.log(`Add additional tags using "," as separator ("${getTagFromTopicName(topicFolderName)}" tag was already set automatically)`);
+            console.log(`\nAdd additional tags using "," as separator ("${getTagFromTopicName(topicFolderName)}" tag was already set automatically)`);
             expect = 'Tags';
         }
     } else if (expect === 'Tags') {
@@ -133,7 +132,7 @@ rl.on('line', (line) => {
         mySolutionsFileNames = mySolutionsPaths.map((fullPath) => fullPath.substring(fullPath.lastIndexOf('/') + 1));
         
         mySolutionsColumn = '';
-        console.log(`Enter Tooltip for file "${mySolutionsFileNames[0]}" (when hovering over solution icon)`);
+        console.log(`\nEnter Tooltip for file "${mySolutionsFileNames[0]}" (when hovering over solution icon)`);
         expect = "MySolution Tooltip";
     } else if (expect === "MySolution Tooltip") {
         mySolutionsColumn += `[![${line}](./images/solution.png)](${mySolutionsPaths[0]})`;
@@ -145,7 +144,7 @@ rl.on('line', (line) => {
             mySolutionsColumn += ' ';
             console.log(`Enter Tooltip for file "${mySolutionsFileNames[0]}" (when hovering over solution icon)`);
         } else {
-            console.log('Is there official LeetCode solution for this problem? (yes(y) / no(n))');
+            console.log('\nIs there official LeetCode solution for this problem? (yes(y) / no(n))');
             expect = "Is there official LeetCode solution answer";
         }
     } else if (expect === "Is there official LeetCode solution answer") {
@@ -157,7 +156,7 @@ rl.on('line', (line) => {
         }
     
     
-        console.log(`Add URLs for Other Cool Solutions using "," as separator`);
+        console.log(`\nAdd URLs for Other Cool Solutions using "," as separator`);
         expect = 'Other cool solutions URLs';
     } else if (expect === 'Other cool solutions URLs') {
     
@@ -165,25 +164,25 @@ rl.on('line', (line) => {
         if (line !== '') {
             otherSolutionsUrls = line.split(',').map((url) => url.trim());
             otherCoolSolutionsColumn = '';
-            console.log(`Enter Tooltip for file "${otherSolutionsUrls[0]}" (when hovering over solution icon)`);
-            expect = "OtherSolutions Tooltip";
+            console.log(`\nEnter Description for Other Solution "${otherSolutionsUrls[0]}"`);
+            expect = "Other Solutions Description";
         } else {
             otherCoolSolutionsColumn = '';
-            console.log('Solved on my own?');
+            console.log('\nSolved on my own?');
             expect = "Solved on my own answer";
         }
-    } else if (expect === "OtherSolutions Tooltip") {
+    } else if (expect === "Other Solutions Description") {
+        // Example of generated string:
         // 1) [Generating permut-s in descending order](https://leetcode.com/problems/largest-time-for-given-digits/discuss/201564/C%2B%2B-4-lines-0-ms-prev_permutation), <br><br>
-    
         otherCoolSolutionsColumn += `${iOtherSolution + 1}) [${line}](${otherSolutionsUrls[iOtherSolution]})`;
         iOtherSolution++;
         
         // Request Tooltips for Other Cool Soluions.
         if (iOtherSolution < otherSolutionsUrls.length) {
             otherCoolSolutionsColumn += ', <br><br>';
-            console.log(`Enter Tooltip for file "${otherSolutionsUrls[0]}" (when hovering over solution icon)`);
+            console.log(`\nEnter Tooltip for file "${otherSolutionsUrls[0]}" (when hovering over solution icon)`);
         } else {
-            console.log('Solved on my own?');
+            console.log('\nSolved on my own?');
             expect = "Solved on my own answer";
         }
     } else if (expect === "Solved on my own answer") {
@@ -191,10 +190,32 @@ rl.on('line', (line) => {
         
         dateColumn = getTodayString();
 
-        let readmeTableRecord = `| ${difficultyColumn} | ${titleColumn} | ${tagsColumn} | ${mySolutionsColumn} | ${leetCodeSolutionColumn} | ${otherCoolSolutionsColumn} | ${solvedOnMyOwnColumn} | ${dateColumn}`;
-        console.log(readmeTableRecord);
+        // Add URL inside the Problem file.
+        addTableRecordInReadmeFile();
+        
+        exitApplication();
     }
 });
+
+function addTableRecordInReadmeFile() {
+    let readmeTableRecord = `| ${difficultyColumn} | ${titleColumn} | ${tagsColumn} | ${mySolutionsColumn} | ${leetCodeSolutionColumn} | ${otherCoolSolutionsColumn} | ${solvedOnMyOwnColumn} | ${dateColumn}`;
+    // console.log(readmeTableRecord);
+    
+    const options = {
+        files: 'README.md',
+        from: /<!-- Placeholder Helper for new solutions\(used to programmaticaly insert new solutions here\) -->/,
+        to: `${readmeTableRecord}\n<!-- Placeholder Helper for new solutions(used to programmaticaly insert new solutions here) -->`
+    };
+    
+    try {
+        const results = replaceInFile.sync(options);
+        // console.log('Replacement results:', results);
+        console.log('\nTable record was successfully added into README.md file!');
+    }
+    catch (error) {
+        console.error('\nError occurred while adding Table record', error);
+    }
+}
 
 // Returns today string in format "2019-07-24".
 function getTodayString() {
@@ -251,7 +272,7 @@ function findProblemFolder(problemName) {
     
     let problemNameUnderscoresLowerCase = problemNameUnderscores.toLowerCase();
     
-    console.log(`Searching for "${problemNameUnderscoresLowerCase}" Problem Folder inside "/topics/..."`);
+    console.log(`\nSearching for "${problemNameUnderscoresLowerCase}" Problem Folder inside "/topics/..."`);
     let foundProblemDirs = dirs.filter((dir) => dir.path.toLowerCase().indexOf(problemNameUnderscoresLowerCase) >= 0);
     let foundProblemDir;
     
