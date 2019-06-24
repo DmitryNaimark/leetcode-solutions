@@ -21,6 +21,11 @@
 //     A.length == 4
 //     0 <= A[i] <= 9
 // ---------------------------------------------------
+
+// Runtime Complexity: O(4! + 4!) => O(1)
+//     There are only 4 digits. Getting all permutations is 4!, going through each of them is also 4!.
+// Space Complexity: O(4!) => O(1)
+
 /**
  * @param {number[]} a
  * @return {string}
