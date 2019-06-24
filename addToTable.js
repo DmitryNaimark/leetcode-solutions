@@ -102,7 +102,7 @@ rl.on('line', (line) => {
             problemNameUnderscores = words.join('_');
             problemNameDashed = words.join('-').toLowerCase();
 
-            let titleColumn = `[${problemNumber}. ${problemName}](https://leetcode.com/problems/${problemNameDashed}/description/)`;
+            titleColumn = `[${problemNumber}. ${problemName}](https://leetcode.com/problems/${problemNameDashed}/description/)`;
     
             // Request from user necessary info and generate text for each column inside README.md table.
             console.log(`Add additional tags using "," as separator ("${getTagFromTopicName(topicFolderName)}" tag was already set automatically)`);
@@ -177,22 +177,42 @@ rl.on('line', (line) => {
     
         otherCoolSolutionsColumn += `${iOtherSolution + 1}) [${line}](${otherSolutionsUrls[iOtherSolution]})`;
         iOtherSolution++;
-    
+        
+        // Request Tooltips for Other Cool Soluions.
         if (iOtherSolution < otherSolutionsUrls.length) {
             otherCoolSolutionsColumn += ', <br><br>';
             console.log(`Enter Tooltip for file "${otherSolutionsUrls[0]}" (when hovering over solution icon)`);
         } else {
-            console.log(otherCoolSolutionsColumn);
-            
             console.log('Solved on my own?');
             expect = "Solved on my own answer";
         }
     } else if (expect === "Solved on my own answer") {
-        let otherCoolSolutionsColumn;
-        let solvedOnMyOwnColumn;
-        let dateColumn;
+        solvedOnMyOwnColumn = line;
+        
+        dateColumn = getTodayString();
+
+        let readmeTableRecord = `| ${difficultyColumn} | ${titleColumn} | ${tagsColumn} | ${mySolutionsColumn} | ${leetCodeSolutionColumn} | ${otherCoolSolutionsColumn} | ${solvedOnMyOwnColumn} | ${dateColumn}`;
+        console.log(readmeTableRecord);
     }
 });
+
+// Returns today string in format "2019-07-24".
+function getTodayString() {
+    let now = new Date();
+    let year = now.getFullYear();
+    
+    let month = now.getMonth() + 1;
+    if (month < 10) {
+        month = '0' + month;
+    }
+    
+    let day = now.getDate();
+    if (day < 10) {
+        day = '0' + day;
+    }
+    
+    return `\`${year}-${month}-${day}\``;
+}
 
 // Returns array, which doesn't contain duplicates.
 function removeArrayDuplicates(arr) {
