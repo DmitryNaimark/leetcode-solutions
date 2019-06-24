@@ -22,7 +22,9 @@ let expect = "Problem name",
     // "HashTable"
     topicFolderName,
     // "Jewels_and_Stones_771"
-    problemFolderName;
+    problemFolderName,
+    mySolutionsPaths,
+    mySolutionsFileNames;
 
 // Text in columns, which will be programmatically generated.
 
@@ -97,15 +99,7 @@ rl.on('line', (line) => {
             problemName = words.join(' ');
             problemNameUnderscores = words.join('_');
             problemNameDashed = words.join('-').toLowerCase();
-        
-            // Helper variables, used to generate URLs, path to Problem Folder, Topic Folder etc.
-            // console.log('problemNumber', problemNumber);
-            // console.log('problemName', problemName);
-            // console.log('problemNameUnderscores', problemNameUnderscores);
-            // console.log('problemNameDashed', problemNameDashed);
-            // console.log('topicFolderName', topicFolderName);
-            // console.log('problemFolderName', problemFolderName);
-        
+
             let titleColumn = `[${problemNumber}. ${problemName}](https://leetcode.com/problems/${problemNameDashed}/description/)`;
     
             // Request from user necessary info and generate text for each column inside README.md table.
@@ -122,15 +116,42 @@ rl.on('line', (line) => {
             let additionalTags = line.split(',').map((tag) => getTagFromTopicName(tag.trim()));
             tags = removeArrayDuplicates(tags.concat(additionalTags));
         }
-        
+    
         tagsColumn = tags.join(', ');
+    
         
-        let mySolutionsColumn;
         // Retrieve list of JS files(Problem Solutions) inside Problem Folder.
         let problemFilesFullPaths = findProblemFiles(problemFolderFullPath);
-
-
-        let leetCodeSolutionColumn;
+        // Get relative paths starting from 'topics\...'.
+        mySolutionsPaths = problemFilesFullPaths.map(function(fullPath) {
+            let relativePath = fullPath.substring(fullPath.indexOf('topics'));
+            // Replace '\' with '/'
+            return relativePath.replace(/\\/g, '/')
+        });
+        mySolutionsFileNames = mySolutionsPaths.map((fullPath) => fullPath.substring(fullPath.lastIndexOf('/') + 1));
+        
+        console.log(`Enter Tooltip for file "${mySolutionsFileNames[0]}" (when hovering over solution icon)`);
+        expect = "MySolution Tooltip";
+    } else if (expect === "MySolution Tooltip") {
+        mySolutionsColumn = `[![${line}](./images/solution.png)](${mySolutionsPaths[0]})`;
+    
+        mySolutionsPaths.shift();
+        if (mySolutionsPaths.length > 0) {
+            mySolutionsColumn += ' ';
+            console.log(`Enter Tooltip for file "${mySolutionsFileNames[0]}" (when hovering over solution icon)`);
+        } else {
+            console.log('Is there official LeetCode solution for this problem? (yes(y) / no(n)');
+            expect = "Is there official LeetCode solution answer";
+        }
+    } else if (expect === "Is there official LeetCode solution answer") {
+        // If official solution exists, generate URL for it.
+        if (line[0] === 'y') {
+            leetCodeSolutionColumn = `[![](./images/solution.png)](https://leetcode.com/problems/${problemNameDashed}/solution/)`;
+        } else {
+            leetCodeSolutionColumn = '-';
+        }
+        
+        
         let otherCoolSolutionsColumn;
         let solvedOnMyOwnColumn;
         let dateColumn;
