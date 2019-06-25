@@ -17,6 +17,10 @@
 // The median is (2 + 3)/2 = 2.5
 // ---------------------------------------------------
 
+// Runtime Complexity: O((n1 + n2) / 2) => O(n1 + n2)
+//     Where n1 and n2 are array lengths.
+// Space Complexity: O(1)
+
 /**
  * @param {number[]} nums1
  * @param {number[]} nums2
@@ -26,14 +30,14 @@ function findMedianSortedArrays(nums1, nums2) {
     let i = -1,
         j = -1,
         totalLength = nums1.length + nums2.length,
-        isOdd = (totalLength % 2 > 0),
+        isOdd = (totalLength % 2 !== 0),
         iFirstMedian = isOdd
             ? Math.floor(totalLength / 2)
             : totalLength / 2 - 1,
         iCounter = iFirstMedian,
         iChangedLast = false;
     
-    // Iterate over nums1 and nums2 by Ascending numbers, untill we're at the median element.
+    // Iterate over nums1 and nums2 by Ascending numbers, until we're at the median element.
     while (iCounter >= 0) {
         if (nums1[i + 1] === undefined || nums1[i + 1] > nums2[j + 1]) {
             j++;
