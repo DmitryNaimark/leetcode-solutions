@@ -1,6 +1,7 @@
 const readline = require('readline');
 const fs = require("fs");
 const replaceInFile = require('replace-in-file');
+const klawSync = require('klaw-sync');
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -36,14 +37,15 @@ rl.on('line', (line) => {
         
         // TODO: Check if Problem Folder already exists. In that case request comment in brackets and add new JS file.
         
+        
         expect = "Topic";
-        console.log(`Provide main Topic folder (for example: "HashTable" or "DynamicProgramming")`)
+        console.log(`\nProvide main Topic folder (for example: "HashTable" or "DynamicProgramming")`)
     } else if (expect === "Topic") {
         topicFolderName = line;
         
         // Check if Topic Folder already exists(which is expected).
         if (fs.existsSync('topics/' + topicFolderName)) {
-            console.log(`Topic folder exists (good)`);
+            console.log(`\nTopic folder exists (good)`);
             
             // Create Problem folder
             problemNameUnderscores = problemName.replace(/ /g, '_');
@@ -61,7 +63,7 @@ rl.on('line', (line) => {
             exitApplication();
         } else {
             console.log(`Specified Topic folder doesn't exist in "leetcode-solutions"`);
-            console.log(`Provide main Topic folder (for example: "HashTable" or "DynamicProgramming")`)
+            console.log(`\nProvide main Topic folder (for example: "HashTable" or "DynamicProgramming")`)
         }
     }
 });
@@ -118,6 +120,34 @@ function replaceUrlInProblemFile() {
     }
     catch (error) {
         console.error('Error occurred during URL replacement:', error);
+    }
+}
+
+// Returns full path for provided Problem Folder name.
+// problemName: case insensitive, spaces or underscores, without problem number.
+function findProblemFolder(problemName) {
+    let dirs = klawSync('./topics', {nofile: true, depthLimit: 1});
+    
+    // Replace spaces with underscores.
+    problemNameUnderscores = problemName.replace(/ /g, '_');
+    
+    // Trim "_" from start and end.
+    problemNameUnderscores = problemNameUnderscores.replace(/^_+|_+$/g, '');
+    
+    let problemNameUnderscoresLowerCase = problemNameUnderscores.toLowerCase();
+    
+    console.log(`\nSearching for "${problemNameUnderscoresLowerCase}" Problem Folder inside "/topics/..."`);
+    let foundProblemDirs = dirs.filter((dir) => dir.path.toLowerCase().indexOf(problemNameUnderscoresLowerCase) >= 0);
+    let foundProblemDir;
+    
+    // Problem Folder wasn't found
+    if (foundProblemDirs.length === 0) {
+        return null;
+    }
+    // Problem folder was found
+    else {
+        foundProblemDir = foundProblemDirs[0];
+        return foundProblemDir.path;
     }
 }
 
