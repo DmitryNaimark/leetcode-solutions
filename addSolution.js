@@ -34,13 +34,15 @@ rl.on('line', (line) => {
         problemNumber = line.substring(0, dotIndex);
         problemName = line.substring(dotIndex + 2);
         
+        // TODO: Check if Problem Folder already exists. In that case request comment in brackets and add new JS file.
+        
         expect = "Topic";
         console.log(`Provide main Topic folder (for example: "HashTable" or "DynamicProgramming")`)
     } else if (expect === "Topic") {
         topicFolderName = line;
         
         // Check if Topic Folder already exists(which is expected).
-        if (fs.existsSync(topicFolderName)) {
+        if (fs.existsSync('topics/' + topicFolderName)) {
             console.log(`Topic folder exists (good)`);
             
             // Create Problem folder
@@ -50,12 +52,11 @@ rl.on('line', (line) => {
             
             // Create Problem file (using "templateSolution.js" as a template).
             problemFileName = `${problemFolderName}.js`;
-            problemFileFullPath = `${topicFolderName}/${problemFolderName}/${problemFileName}`;
+            problemFileFullPath = `topics/${topicFolderName}/${problemFolderName}/${problemFileName}`;
             copyFile("templateSolution.js", problemFileFullPath);
             
             // Add URL inside the Problem file.
             replaceUrlInProblemFile();
-            
             
             exitApplication();
         } else {
@@ -68,7 +69,7 @@ rl.on('line', (line) => {
 // Creates Problem Folder inside Topic Folder.
 function createProblemFolder() {
     try {
-        createFolderRecursivelyIfDoesntExist(`${topicFolderName}/${problemFolderName}`);
+        createFolderRecursivelyIfDoesntExist(`topics/${topicFolderName}/${problemFolderName}`);
         console.log(`Problem folder "${problemFolderName}" was created inside Topic folder "${topicFolderName}"`);
     } catch (err) {
         console.log(`Couldn't create Problem folder, error:`);
