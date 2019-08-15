@@ -11,3 +11,4 @@ This is a temporary file, which contains all solutions, which were
 Completely Processed Problems:
 20
 26
+27
