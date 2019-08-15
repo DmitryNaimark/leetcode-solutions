@@ -1,0 +1,12 @@
+This is a temporary file, which contains all solutions, which were
+- solved
+- looked at top JS / Discussion solutions
+- fully cleaned up according to new templateSolution.js
+    - Description removed
+    - Runtime/Space complexities measured
+- added to Github table
+
+
+
+Completely Processed Problems:
+20
