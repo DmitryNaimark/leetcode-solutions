@@ -9,6 +9,10 @@ This is a temporary file, which contains all solutions, which were
 
 
 Completely Processed Problems:
+----- Old -----
+// TODO - Fully process problems, which were already solved.
+
+----- New -----
 20
 26
-27
+. . . Every problem added in README.md after 20 was fully processed
