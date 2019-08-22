@@ -189,7 +189,7 @@ function findProblemFolder(problemName) {
     let problemNameUnderscoresLowerCase = problemNameUnderscores.toLowerCase();
     
     console.log(`\nSearching for "${problemNameUnderscoresLowerCase}" Problem Folder inside "/topics/..."`);
-    let foundProblemDirs = dirs.filter((dir) => dir.path.toLowerCase().indexOf(problemNameUnderscoresLowerCase) >= 0);
+    let foundProblemDirs = dirs.filter((dir) => dir.path.toLowerCase() === problemNameUnderscoresLowerCase);
     let foundProblemDir;
     
     // Problem Folder wasn't found
