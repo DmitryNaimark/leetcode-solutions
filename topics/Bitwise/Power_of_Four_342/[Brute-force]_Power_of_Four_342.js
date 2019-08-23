@@ -8,7 +8,7 @@
  * @return {boolean}
  */
 function isPowerOfFour(num) {
-    if (num < 4 && num !== 1) {
+    if (num < 1) {
         return false;
     }
 
