@@ -155,11 +155,9 @@ rl.on('line', (line) => {
             leetCodeSolutionColumn = '-';
         }
     
-    
         console.log(`\nAdd URLs for Other Cool Solutions using "," as separator`);
         expect = 'Other cool solutions URLs';
     } else if (expect === 'Other cool solutions URLs') {
-    
         // If user has entered Other Cool Solutions URLs.
         if (line !== '') {
             otherSolutionsUrls = line.split(',').map((url) => url.trim());
@@ -180,7 +178,7 @@ rl.on('line', (line) => {
         // Request Tooltips for Other Cool Soluions.
         if (iOtherSolution < otherSolutionsUrls.length) {
             otherCoolSolutionsColumn += ', <br><br>';
-            console.log(`\nEnter Tooltip for file "${otherSolutionsUrls[0]}" (when hovering over solution icon)`);
+            console.log(`\nEnter Description for Other Solution "${otherSolutionsUrls[iOtherSolution]}"`);
         } else {
             console.log('\nSolved on my own?');
             expect = "Solved on my own answer";
