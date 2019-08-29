@@ -65,6 +65,7 @@ Feel free to Fork, Clone or Star this repository.
 | ![][easy] | [171. Excel Sheet Column Number](https://leetcode.com/problems/excel-sheet-column-number/description/) | `Math`, `Base 26` | [![](./images/solution.png)](topics/Math/Excel_Sheet_Column_Number_171/Excel_Sheet_Column_Number_171.js) | - |  | Base 26 to Base 10 | `2019-08-29`
 | ![][easy] | [728. Self Dividing Numbers](https://leetcode.com/problems/self-dividing-numbers/description/) | `Math` | [![](./images/solution.png)](topics/Math/Self_Dividing_Numbers_728/Self_Dividing_Numbers_728.js) | [![](./images/solution.png)](https://leetcode.com/problems/self-dividing-numbers/solution/) |  | Brute-force is the only way | `2019-08-29`
 | ![][easy] | [485. Max Consecutive Ones](https://leetcode.com/problems/max-consecutive-ones/description/) | `Array` | [![](./images/solution.png)](topics/Array/Max_Consecutive_Ones_485/Max_Consecutive_Ones_485.js) | - |  | Simple counting | `2019-08-29`
+| ![][easy] | [997. Find the Town Judge](https://leetcode.com/problems/find-the-town-judge/description/) | `Graph` | [![](./images/solution.png)](topics/Graph/Find_the_Town_Judge_997/Find_the_Town_Judge_997.js) | - |  | Graph | `2019-08-29`
 <!-- Placeholder Helper for new solutions(used to programmaticaly insert new solutions here) -->
 
 
