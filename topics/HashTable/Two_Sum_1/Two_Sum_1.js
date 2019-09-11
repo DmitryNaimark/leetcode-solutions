@@ -1,37 +1,30 @@
 // https://leetcode.com/articles/two-sum/#
 // ---------------------------------------------------
-// Given an array of integers, return indices of the two numbers such that they add up to a specific target.
-//
-// You may assume that each input would have exactly one solution, and you may not use the same element twice.
-//
-// Example:
-//
-// Given nums = [2, 7, 11, 15], target = 9,
-//
-// Because nums[0] + nums[1] = 2 + 7 = 9,
-// return [0, 1].
-// ---------------------------------------------------
 
+// Runtime Complexity: O(N)
+// Space Complexity: O(Distinct(N)) => O(N)
+// Solution
 /**
  * @param {number[]} numbers
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function(numbers, target) {
-    let iteratedNumbersSet = new Map();
+function twoSum(numbers, target) {
+    let numIndexMap = new Map();
     
-    for (let [iNumber, number] of numbers.entries()) {
-        let numberToSearch = target - number;
+    for (let i = 0; i < numbers.length; i++) {
+        let numToSearch = target - numbers[i];
         
-        if (iteratedNumbersSet.has(numberToSearch)) {
-            return [iteratedNumbersSet.get(numberToSearch), iNumber]
+        if (numIndexMap.has(numToSearch)) {
+            return [numIndexMap.get(numToSearch), i];
         }
         
-        iteratedNumbersSet.set(number, iNumber);
+        numIndexMap.set(numbers[i], i);
     }
-};
+}
 
 // ---------------------------------------------------
 //                    Test Cases
 // ---------------------------------------------------
+// [0, 1]
 console.log(twoSum([2, 7, 11, 15], 9));
