@@ -9,23 +9,22 @@
  * @return {number}
  */
 function search(nums, target) {
-    // Invariants (See another solution, which uses clearer invariants).
+    // Invariants:
     // Binary search has 3 "ranges":
-    //     - iLeft and elements to the left - Less than target OR target itself
-    //     - iRight and elements to the right - Higher than target OR target itself
+    //     - iLeft and elements to the left - Less than target
+    //     - iRight and elements to the right - Higher than target
     //     - Elements between iLeft and iRight - remain to be seen and moved to the right or left range.
-    let iLeft = 0,
-        iRight = nums.length - 1;
+    let iLeft = -1,
+        iRight = nums.length;
     
-    // Since our invariants state that iLeft can be target or iRight can be target, that means,
-    // that at the end, when iLeft === iRight, we should check if it is target, therefore "<=" is used. 
-    while (iLeft <= iRight) {
+    // If there are no elements remain to be seen, there is no answer.
+    while (iRight - iLeft > 1) {
         let iMid = iLeft + Math.floor((iRight - iLeft) / 2);
         
-        if (nums[iMid] < target) {
-            iLeft = iMid + 1;
-        } else if (nums[iMid] > target) {
-            iRight = iMid - 1;
+        if (nums[iMid] > target) {
+            iRight = iMid;
+        } else if (nums[iMid] < target) {
+            iLeft = iMid;
         } else {
             return iMid;
         }
