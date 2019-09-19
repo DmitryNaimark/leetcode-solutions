@@ -9,33 +9,28 @@
  * @return {number}
  */
 function getMinimumDifference(root) {
-    let stack = [],
-        cur = root,
-        prev = null,
-        minDiff = Infinity;
+    let sharedObj = {
+        lastVisited: Number.MAX_SAFE_INTEGER,
+        minAbsDiff: Number.MAX_SAFE_INTEGER
+    };
     
-    while (true) {
-        if (cur != null) {
-            stack.push(cur);
-            cur = cur.left;
-        } else {
-            if (stack.length === 0) {
-                break;
-            }
-            cur = stack.pop();
-            if (prev != null) {
-                minDiff = Math.min(Math.abs(cur.val - prev.val), minDiff);
-            }
-            
-            prev = cur;
-            cur = cur.right;
-        }
-    }
+    inOrderTraversalRecursively(root, sharedObj);
     
-    return minDiff;
+    return sharedObj.minAbsDiff;
 }
 
-
+function inOrderTraversalRecursively(node, sharedObj) {
+    if (node == null) {
+        return null;
+    }
+    
+    inOrderTraversalRecursively(node.left, sharedObj);
+    
+    sharedObj.minAbsDiff = Math.min(Math.abs(sharedObj.lastVisited - node.val), sharedObj.minAbsDiff);
+    sharedObj.lastVisited = node.val;
+    
+    inOrderTraversalRecursively(node.right, sharedObj);
+}
 
 
 // ---------------------------------------------------
