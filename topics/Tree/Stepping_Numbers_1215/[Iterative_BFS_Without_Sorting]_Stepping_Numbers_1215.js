@@ -1,8 +1,9 @@
 // https://leetcode.com/problems/stepping-numbers/
 // ---------------------------------------------------
 
-// Runtime Complexity: O(10 * log10(high)) => O(log10(high))
-// Space Complexity: O()
+// Runtime Complexity: O(10 * 2^log10(high)) => O(2^log10(high))
+// Space Complexity: O(10 * 2^log10(high) / 2) - divided by 2, since we're interested in the "last layer" of bfs tree
+//     => 2^log(10)(high) 
 /**
  * @param {number} low
  * @param {number} high
@@ -23,6 +24,7 @@ function countSteppingNumbers(low, high) {
     }
     
     while (q.length > 0) {
+        console.log(q.length);
         let num = q.shift();
         
         if (num >= low && num <= high) {
@@ -49,4 +51,5 @@ function countSteppingNumbers(low, high) {
 //                    Test Cases
 // ---------------------------------------------------
 // [0,1,2,3,4,5,6,7,8,9,10,12,21]
-console.log(countSteppingNumbers(0, 21));
+// console.log(countSteppingNumbers(0, 21));
+countSteppingNumbers(0, 100);
