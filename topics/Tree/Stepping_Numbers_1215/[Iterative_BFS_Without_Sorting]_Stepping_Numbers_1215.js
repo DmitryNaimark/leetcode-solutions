@@ -51,5 +51,5 @@ function countSteppingNumbers(low, high) {
 //                    Test Cases
 // ---------------------------------------------------
 // [0,1,2,3,4,5,6,7,8,9,10,12,21]
-// console.log(countSteppingNumbers(0, 21));
-countSteppingNumbers(0, 100);
+console.log(countSteppingNumbers(0, 21));
+// countSteppingNumbers(0, 100);
