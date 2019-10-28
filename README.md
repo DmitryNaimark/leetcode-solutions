@@ -4,6 +4,8 @@ This repository contains solutions for LeetCode problems I've solved(using JS), 
 Solutions are grouped by Topics(see `topics` folder).  
 
 Feel free to Fork, Clone or Star this repository.  
+
+Also, check out [my Python Repository](https://github.com/DmitryNaimark/leetcode-solutions-python), which contains solutions in Python.
 <br />
 
 | Difficulty | Title | Tags | My Solutions | LeetCode Solution | Other cool solutions | Solved on my own? | Date |

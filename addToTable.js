@@ -65,8 +65,8 @@ rl.on('line', (line) => {
             expect = "Problem name"
         }
     }
-    // Expects "Jewels and Stones" or "Jewels_and_Stones".
-    if (expect === "Problem name") {
+    // Expects "Jewels and Stones" or "Jewels_and_Stones", or "Jewels and Stones 771" or any partial unique solution folder name.
+    else if (expect === "Problem name") {
         // Find Problem Folder
         problemFolderFullPath = findProblemFolder(line);
         
