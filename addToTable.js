@@ -8,7 +8,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-let expect = "Problem name",
+let expect = "Is it latest changed folder",
     // ...\leetcode-solutions\topics\HashTable\Jewels_and_Stones_771
     problemFolderFullPath,
     // "771"
@@ -50,9 +50,21 @@ let difficultyColumn,
     // Date when this Problem was added to README.md.
     dateColumn;
 
-console.log(`Enter solved Problem Name (without problem number. Can be partial unique name)`);
+let latestChangedFolderPath = findLatestChangedFolder();
+
+console.log(`\nIs this the solution folder you want to add to README.md table? ("y"/Enter - yes, anything else - no`);
+console.log(latestChangedFolderPath);
 
 rl.on('line', (line) => {
+    if (expect === 'Is it latest changed folder') {
+        if (line === '' || line[0].toLowerCase() === 'y') {
+            problemFolderFullPath = latestChangedFolderPath;
+            expect = "Difficulty";
+        } else {
+            console.log(`Enter solution folder Name(Can be partial name if it's unique)`);
+            expect = "Problem name"
+        }
+    }
     // Expects "Jewels and Stones" or "Jewels_and_Stones".
     if (expect === "Problem name") {
         // Find Problem Folder
@@ -127,26 +139,14 @@ rl.on('line', (line) => {
         mySolutionsPaths = problemFilesFullPaths.map(function(fullPath) {
             let relativePath = fullPath.substring(fullPath.indexOf('topics'));
             // Replace '\' with '/'
-            return relativePath.replace(/\\/g, '/')
+            return relativePath.replace(/\\/g, '/');
         });
         mySolutionsFileNames = mySolutionsPaths.map((fullPath) => fullPath.substring(fullPath.lastIndexOf('/') + 1));
         
         mySolutionsColumn = '';
-        console.log(`\nEnter Tooltip for file "${mySolutionsFileNames[0]}" (when hovering over solution icon)`);
-        expect = "MySolution Tooltip";
-    } else if (expect === "MySolution Tooltip") {
-        mySolutionsColumn += `[![${line}](./images/solution.png)](${mySolutionsPaths[0]})`;
-    
-        mySolutionsPaths.shift();
-        mySolutionsFileNames.shift();
-        
-        if (mySolutionsPaths.length > 0) {
-            mySolutionsColumn += ' ';
-            console.log(`Enter Tooltip for file "${mySolutionsFileNames[0]}" (when hovering over solution icon)`);
-        } else {
-            console.log('\nIs there official LeetCode solution for this problem? (yes(y) / no(n))');
-            expect = "Is there official LeetCode solution answer";
-        }
+
+        console.log('\nIs there official LeetCode solution for this problem? (yes(y) / no(n))');
+        expect = "Is there official LeetCode solution answer";
     } else if (expect === "Is there official LeetCode solution answer") {
         // If official solution exists, generate URL for it.
         if (line[0] === 'y') {
@@ -286,6 +286,24 @@ function findProblemFolder(problemName) {
         // console.log('foundProblemDir.path', foundProblemDir.path);
         return foundProblemDir.path;
     }
+}
+
+// Returns full path for folder, which was changed the latest(file inside of it was changed).
+// This way we can use an assumption that user wants to add latest changed solution to the README.md table. 
+function findLatestChangedFolder() {
+    let dirs = klawSync('./topics', {nofile: true, depthLimit: 1});
+    
+    let latestChangeMs,
+        latestChangedFolder;
+    
+    for (let dir of dirs) {
+        if (latestChangeMs == null || latestChangeMs < dir.stats.ctimeMs) {
+            latestChangeMs = dir.stats.ctimeMs;
+            latestChangedFolder = dir
+        }
+    }
+    
+    return latestChangedFolder.path;
 }
 
 // Exits NodeJS Application.
