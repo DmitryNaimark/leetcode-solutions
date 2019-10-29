@@ -146,6 +146,10 @@ rl.on('line', (line) => {
         mySolutionsFileNames = mySolutionsPaths.map((fullPath) => fullPath.substring(fullPath.lastIndexOf('/') + 1));
         
         mySolutionsColumn = '';
+        for (let mySolutionPath of mySolutionsPaths) {
+            mySolutionsColumn += `[![](./images/solution.png)](${mySolutionPath}) `;
+        }
+        mySolutionsColumn = mySolutionsColumn.trim();
 
         console.log('\nIs there official LeetCode solution for this problem? (yes(y) / no(n))');
         expect = "Is there official LeetCode solution answer";
