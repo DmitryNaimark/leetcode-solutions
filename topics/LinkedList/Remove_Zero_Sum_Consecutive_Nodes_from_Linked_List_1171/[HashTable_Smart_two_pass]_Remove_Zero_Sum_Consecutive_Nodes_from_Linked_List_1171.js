@@ -21,27 +21,22 @@ function removeZeroSumSublists(head) {
     let prefixSumToNodeMap = new Map([[0, dummyHead]]),
         curSum = 0;
     
-    let curNode = head;
-    while (curNode != null) {
-        curSum += curNode.val;
+    while (head != null) {
+        curSum += head.val;
+        prefixSumToNodeMap.set(curSum, head);
+        head = head.next;
+    }
+    
+    head = dummyHead;
+    curSum = 0;
+    while (head != null) {
+        curSum += head.val;
         
         if (prefixSumToNodeMap.has(curSum)) {
-            let firstNodeToStay = prefixSumToNodeMap.get(curSum),
-                nodeToRemove = firstNodeToStay.next,
-                sum = curSum;
-            
-            while (nodeToRemove !== curNode) {
-                sum += nodeToRemove.val;
-                prefixSumToNodeMap.delete(sum);
-                
-                nodeToRemove = nodeToRemove.next;
-            }
-            firstNodeToStay.next = curNode.next;
-        } else {
-            prefixSumToNodeMap.set(curSum, curNode);
+            head.next = prefixSumToNodeMap.get(curSum).next;
         }
-    
-        curNode = curNode.next;
+        
+        head = head.next;
     }
     
     return dummyHead.next;
@@ -92,3 +87,7 @@ console.log(createArrayFromLinkedList(removeZeroSumSublists(createLinkedListFrom
 console.log(createArrayFromLinkedList(removeZeroSumSublists(createLinkedListFromArray([1,2,3,-3,4]))));
 // [1]
 console.log(createArrayFromLinkedList(removeZeroSumSublists(createLinkedListFromArray([1,2,3,-3,-2]))));
+// [1]
+console.log(createArrayFromLinkedList(removeZeroSumSublists(createLinkedListFromArray([2, -2, 1]))));
+// null
+console.log(createArrayFromLinkedList(removeZeroSumSublists(createLinkedListFromArray([0, 0, 0]))));

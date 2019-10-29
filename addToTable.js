@@ -59,6 +59,8 @@ rl.on('line', (line) => {
     if (expect === 'Is it latest changed folder') {
         if (line === '' || line[0].toLowerCase() === 'y') {
             problemFolderFullPath = latestChangedFolderPath;
+            
+            console.log('Enter Problem Difficulty: easy(e), medium(m), hard(h)');
             expect = "Difficulty";
         } else {
             console.log(`Enter solution folder Name(Can be partial name if it's unique)`);
